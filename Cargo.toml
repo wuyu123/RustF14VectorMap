@@ -1,0 +1,23 @@
+[package]
+name = "f14vectormap"
+version = "0.2.0"
+edition = "2024"
+
+[features]
+default = ["ahash"]
+concurrent = ["atomic"]  # 启用并发支持
+full = ["concurrent", "ahash"]
+
+[dependencies]
+atomic = { version = "^0.6.1",optional = true }
+lazy_static = "1.5"
+thiserror = "1.0"
+rand = "0.8"
+ahash = { version = "0.8", optional = true }  # 高性能哈希实现
+num = "0.4"
+memoffset = "0.9"  # 用于安全偏移量计算
+triomphe = "0.1"
+
+[dev-dependencies]
+criterion = "0.5"
+tokio = { version = "^1.46.0", features = ["full"] }  # 异步测试
